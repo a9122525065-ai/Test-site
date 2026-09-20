@@ -772,7 +772,7 @@
         </details>
         <details>
           <summary>Можно ли вернуть деньги?</summary>
-          <p class="answer">Да. Вернём деньги за неиспользованные дни, если напишете нам в течение 14 дней с момента оплаты. Напишите в <a href="https://annabel.chatium.ru/lev-markovich/support">службу поддержки</a>, ответим в течение рабочего дня.</p>
+          <p class="answer">Да. Вернём деньги за неиспользованные дни, если напишете нам в течение 14 дней с момента оплаты. Напишите в <a href="#" data-stub="page">службу поддержки</a>, ответим в течение рабочего дня.</p>
         </details>
         <details>
           <summary>Нужен ли VPN или приложение?</summary>
@@ -798,11 +798,11 @@
     <p>Лев Маркович - ИИ-психолог. Это не живой человек и не медицинская услуга. Сервис не ставит диагнозов, не назначает лечение и не заменяет помощь специалиста.</p>
     <p>Если вам нужна срочная помощь, позвоните на бесплатную круглосуточную линию 8-800-2000-122.</p>
     <ul class="legal">
-      <li><a href="https://annabel.chatium.ru/lev-markovich/blog">Блог</a></li>
-      <li><a href="https://annabel.chatium.ru/lev-markovich/support">Служба поддержки</a></li>
-      <li><a href="https://annabel.chatium.ru/lev-markovich/offer">Оферта</a></li>
-      <li><a href="https://annabel.chatium.ru/lev-markovich/privacy">Политика конфиденциальности</a></li>
-      <li><a href="https://annabel.chatium.ru/lev-markovich/requisites">Реквизиты</a></li>
+      <li><a href="#" data-stub="page">Блог</a></li>
+      <li><a href="#" data-stub="page">Служба поддержки</a></li>
+      <li><a href="#" data-stub="page">Оферта</a></li>
+      <li><a href="#" data-stub="page">Политика конфиденциальности</a></li>
+      <li><a href="#" data-stub="page">Реквизиты</a></li>
     </ul>
   </div>
 </footer>
@@ -877,7 +877,9 @@
       if (!a) return;
       e.preventDefault();
       var toast = document.getElementById('stub-toast');
-      toast.textContent = 'Это учебная версия сайта. Кнопка пока ничего не открывает, здесь будет чат со Львом Марковичем.';
+      toast.textContent = a.getAttribute('data-stub') === 'page'
+        ? 'Это учебная версия сайта. Эта страница пока не готова.'
+        : 'Это учебная версия сайта. Кнопка пока ничего не открывает, здесь будет чат со Львом Марковичем.';
       toast.hidden = false;
       clearTimeout(timer);
       timer = setTimeout(function () { toast.hidden = true; }, 4500);
