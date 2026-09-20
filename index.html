@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#F7F1EA">
+<title>Лев Маркович - ИИ-психолог, с которым можно поговорить в любое время</title>
+<meta name="description" content="Рядом люди, а поговорить не с кем. Лев Маркович - ИИ-психолог: выслушает, разберёт вашу ситуацию и подскажет, с чего начать. Анонимно, без регистрации, 24/7. Первый разговор бесплатно, дальше 990 ₽ в месяц.">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400&family=Golos+Text:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F7F1EA;
+    --paper-2: #E6EFEB;
+    --peach: #F3D8C3;
+    --card: #FDFAF6;
+    --ink: #1E2A28;
+    --ink-soft: #55645F;
+    --quiet: #5B6A65;
+    --line: #CBD8D2;
+
+    --deep: #173A36;
+    --deep-2: #24504A;
+    --screen: #E4F0EC;
+    --screen-soft: #9DB8B1;
+
+    --voice: #0F5D58;
+    --voice-deep: #0A4744;
+    --warm: #EFC49A;
+
+    --book: "Literata", Georgia, "Times New Roman", serif;
+    --ui: "Golos Text", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--ui);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--voice-deep); }
+  p { margin: 0 0 16px; text-wrap: pretty; }
+  h1, h2, h3 { font-family: var(--book); font-weight: 700; margin: 0; text-wrap: balance; }
+  h1 { font-size: clamp(36px, 5vw, 62px); line-height: 1.05; letter-spacing: -0.02em; }
+  h2 { font-size: clamp(28px, 3.9vw, 46px); line-height: 1.1; letter-spacing: -0.015em; }
+  h3 { font-size: 23px; line-height: 1.2; }
+  :focus-visible { outline: 3px solid var(--focus, var(--voice)); outline-offset: 3px; }
+  .dark { --focus: var(--warm); }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+  .narrow { max-width: 760px; }
+  .section { padding: clamp(56px, 8vw, 100px) 0; }
+  .band { background: var(--paper-2); }
+  .dark { background: var(--deep); color: var(--screen); }
+  section[id] { scroll-margin-top: 68px; }
+  .lead { font-size: clamp(18px, 2vw, 21px); color: var(--ink-soft); max-width: 58ch; }
+  .dark .lead { color: var(--screen-soft); }
+  .note { color: var(--ink-soft); font-size: 15px; margin: 14px 0 0; }
+  .dark .note { color: var(--screen-soft); }
+  .split { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(28px, 5vw, 72px); align-items: start; }
+
+  .btn {
+    display: inline-block;
+    background: var(--voice);
+    color: #fff;
+    font: 600 17px/1.2 var(--ui);
+    text-decoration: none;
+    padding: 17px 30px;
+    border: 0;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .btn:hover { background: var(--voice-deep); }
+  .btn-sm { padding: 10px 18px; font-size: 15px; }
+  .dark .btn { background: var(--warm); color: var(--deep); }
+  .dark .btn:hover { background: #F7D6B4; }
+
+  /* Шапка */
+  header.top { position: sticky; top: 0; z-index: 10; background: rgba(247, 241, 234, .93); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 68px; }
+  .logo { font: 700 22px/1.1 var(--book); letter-spacing: -0.01em; text-decoration: none; color: var(--ink); }
+  .logo small { display: block; font: 400 12.5px/1.3 var(--ui); color: var(--ink-soft); letter-spacing: 0; }
+
+  /* Первый экран */
+  .hero { padding-top: clamp(40px, 6vw, 76px); overflow-x: clip; }
+  .hero-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: clamp(36px, 5vw, 68px); align-items: start; }
+  .hero .lead { margin: 24px 0 30px; }
+  .facts { display: flex; flex-wrap: wrap; gap: 8px 24px; margin: 28px 0 0; padding: 0; list-style: none; color: var(--ink-soft); font-size: 15px; }
+  .facts li { display: flex; align-items: center; gap: 9px; }
+  .facts svg { width: 22px; height: 22px; flex: none; stroke: var(--voice); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* Мягкие формы вокруг чата: круг и веточка */
+  .stage { position: relative; }
+  .stage .chat { position: relative; }
+  .blob { position: absolute; top: -34px; right: -34px; width: 200px; height: 200px; border-radius: 50%; background: var(--peach); }
+  .sprig { position: absolute; left: -30px; bottom: -20px; width: 56px; height: auto; stroke: var(--voice); fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; opacity: .6; }
+
+  .peach { background: #F5E4D6; }
+
+  /* Как это будет: четыре шага */
+  .steps { list-style: none; margin: 44px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px; }
+  .step { position: relative; text-align: center; }
+  .step .n { width: 64px; height: 64px; margin: 0 auto 18px; border-radius: 50%; background: var(--paper-2); border: 1.5px solid var(--voice); display: grid; place-items: center; font: 700 24px var(--book); color: var(--voice-deep); }
+  .step:not(:last-child)::after { content: ""; position: absolute; top: 32px; left: calc(50% + 44px); right: calc(-50% + 16px); border-top: 2px dotted var(--voice); opacity: .45; }
+  .step h3 { font-size: 20px; margin-bottom: 8px; }
+  .step p { color: var(--ink-soft); font-size: 15.5px; margin: 0; }
+  .steps-cta { text-align: center; margin: 44px 0 0; }
+  @media (max-width: 900px) {
+    .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 24px; }
+    .step:not(:last-child)::after { display: none; }
+    .blob { width: 130px; height: 130px; top: -22px; right: -14px; }
+    .sprig { display: none; }
+  }
+  @media (max-width: 560px) {
+    .steps { grid-template-columns: 1fr; }
+    .step { text-align: left; }
+    .step .n { margin: 0 0 14px; }
+  }
+
+  /* Чат */
+  .chat { background: var(--deep); color: var(--screen); border-radius: 22px; padding: 20px; --focus: var(--warm); }
+  .chat-head { display: flex; align-items: center; gap: 12px; padding-bottom: 16px; }
+  .avatar { width: 42px; height: 42px; flex: none; border-radius: 50%; border: 1.5px solid var(--warm); color: var(--warm); display: grid; place-items: center; font: 700 20px var(--book); }
+  .chat-head b { display: block; font: 700 18px/1.2 var(--book); }
+  .chat-head small { color: var(--screen-soft); font-size: 13.5px; }
+  .tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
+  .tab { font: 500 14.5px/1.2 var(--ui); color: var(--screen-soft); background: var(--deep-2); border: 0; border-radius: 8px; padding: 9px 13px; cursor: pointer; }
+  .tab:hover { color: var(--screen); }
+  .tab[aria-selected="true"] { background: var(--screen); color: var(--deep); font-weight: 600; }
+  .convo { min-height: 268px; }
+  .msg { max-width: 92%; padding: 12px 16px; margin-bottom: 12px; }
+  .msg.you { margin-left: auto; background: var(--deep-2); border-radius: 15px 15px 4px 15px; font-size: 16px; line-height: 1.5; }
+  .msg.lev { border: 1px solid rgba(239, 196, 154, .45); background: rgba(239, 196, 154, .1); border-radius: 15px 15px 15px 4px; font: 400 18px/1.45 var(--book); }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .convo:not([hidden]) .msg { animation: say .45s ease both; }
+    .convo .msg.you { animation-delay: .1s; }
+    .convo .msg.lev { animation-delay: 1.8s; }
+    @keyframes say { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: none; } }
+    .btn, .tab { transition: background-color .15s ease, color .15s ease; }
+
+    /* 1. Круг дышит: медленный вдох и выдох */
+    .blob { animation: breathe 7s ease-in-out infinite; }
+    @keyframes breathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.08); } }
+
+    /* 2. Лев печатает: три точки, потом ответ. Точки лежат поверх места ответа, поэтому ничего не прыгает */
+    .convo { display: grid; align-content: start; }
+    .convo[hidden] { display: none; }
+    .msg.lev { grid-row: 2; grid-column: 1; }
+    .typing { display: flex; gap: 5px; grid-row: 2; grid-column: 1; align-self: start; justify-self: start; padding: 15px 17px; border: 1px solid rgba(239, 196, 154, .45); background: rgba(239, 196, 154, .1); border-radius: 15px 15px 15px 4px; pointer-events: none; animation: typing 1.1s ease .7s both; }
+    .typing span { width: 7px; height: 7px; border-radius: 50%; background: var(--warm); animation: dot .9s ease-in-out infinite; }
+    .typing span:nth-child(2) { animation-delay: .15s; }
+    .typing span:nth-child(3) { animation-delay: .3s; }
+    @keyframes dot { 0%, 60%, 100% { transform: translateY(0); opacity: .5; } 30% { transform: translateY(-4px); opacity: 1; } }
+    @keyframes typing { 0% { opacity: 0; } 10%, 90% { opacity: 1; } 100% { opacity: 0; } }
+
+    /* 3. Тишина: человек говорит, ответ приходит с паузой */
+    .js .silence .said, .js .silence .heard, .js .silence ~ .bridge { opacity: 0; }
+    .js .silence.seen .said, .js .silence.seen .heard { animation: appear .9s ease both; }
+    .js .silence.seen ~ .bridge { animation: appear 1s ease 7.2s both; }
+    .js .silence.seen .said { animation-delay: var(--d, 0s); }
+    .js .silence.seen .heard { animation-delay: calc(var(--d, 0s) + .7s); }
+    .said-row:nth-child(2) { --d: 1.4s; }
+    .said-row:nth-child(3) { --d: 2.8s; }
+    .said-row:nth-child(4) { --d: 4.2s; }
+    .said-row:nth-child(5) { --d: 5.6s; }
+    @keyframes appear { from { opacity: 0; } to { opacity: 1; } }
+
+    /* 4. Шаги: кружки зажигаются, линия вытягивается */
+    .js .steps:not(.seen) .n { background: var(--card); border-color: var(--line); color: var(--quiet); }
+    .js .steps:not(.seen) .step::after { clip-path: inset(0 100% 0 0); }
+    .steps.seen .n { animation: light .5s ease both; }
+    .steps.seen .step::after { animation: draw .8s ease both; }
+    .steps.seen .step:nth-child(2) .n { animation-delay: 1s; }
+    .steps.seen .step:nth-child(3) .n { animation-delay: 2s; }
+    .steps.seen .step:nth-child(4) .n { animation-delay: 3s; }
+    .steps.seen .step:nth-child(1)::after { animation-delay: .4s; }
+    .steps.seen .step:nth-child(2)::after { animation-delay: 1.4s; }
+    .steps.seen .step:nth-child(3)::after { animation-delay: 2.4s; }
+    @keyframes light { from { background: var(--card); border-color: var(--line); color: var(--quiet); } to { background: var(--voice); border-color: var(--voice); color: #fff; } }
+    @keyframes draw { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+  }
+
+  /* Блок тишины - главный элемент страницы */
+  .silence { margin-top: clamp(32px, 5vw, 56px); border-top: 1px solid var(--line); }
+  .said-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(20px, 4vw, 56px); border-bottom: 1px solid var(--line); }
+  .said { font: 400 clamp(20px, 2.4vw, 27px)/1.35 var(--book); padding: 26px 0; }
+  .heard { font: italic 400 16px/1.5 var(--book); color: var(--quiet); padding: 30px 0 26px; position: relative; }
+  .heard::before { content: ""; position: absolute; left: calc(clamp(20px, 4vw, 56px) / -2); top: 0; bottom: 0; width: 1px; background: var(--line); }
+  .bridge { font: 700 clamp(25px, 3.4vw, 40px)/1.15 var(--book); letter-spacing: -0.015em; max-width: 20em; margin: clamp(36px, 5vw, 60px) 0 0; }
+
+  /* История Анны */
+  .story { max-width: 680px; }
+  .story h2 { margin-bottom: 26px; }
+  .story p { font: 400 clamp(17.5px, 1.9vw, 20px)/1.65 var(--book); margin: 0 0 20px; }
+  .story p.first { font-size: clamp(20px, 2.3vw, 25px); line-height: 1.45; }
+  .story blockquote { margin: 30px 0; padding-left: 24px; border-left: 3px solid var(--voice); font: italic 400 clamp(19px, 2.2vw, 24px)/1.4 var(--book); }
+  .signature { display: flex; align-items: center; gap: 14px; margin-top: 34px; padding-top: 22px; border-top: 1px solid var(--line); }
+  .signature .who { font: 700 19px/1.2 var(--book); }
+  .signature .role { color: var(--ink-soft); font-size: 15px; }
+  .story-cta { margin-top: 34px; }
+
+  /* Польза */
+  .gains { margin-top: clamp(32px, 5vw, 48px); }
+  .gain { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 6fr); gap: clamp(16px, 4vw, 48px); padding: 26px 0; border-top: 1px solid var(--line); }
+  .gain:last-child { border-bottom: 1px solid var(--line); }
+  .gain h3 { font-size: clamp(21px, 2.3vw, 26px); }
+  .gain p { margin: 0; color: var(--ink-soft); }
+
+  /* Темы */
+  .topics { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 0 clamp(24px, 4vw, 56px); margin-top: 40px; }
+  .topic { padding: 20px 0; border-top: 1px solid var(--line); }
+  .topic b { display: block; font: 700 19px/1.25 var(--book); margin-bottom: 5px; }
+  .topic span { color: var(--ink-soft); font-size: 15.5px; }
+
+  /* Приватность */
+  .privacy { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 28px clamp(24px, 4vw, 48px); margin-top: 36px; }
+  .privacy div b { display: block; font: 700 18px/1.25 var(--book); margin-bottom: 6px; color: var(--screen); }
+  .privacy div span { color: var(--screen-soft); font-size: 15.5px; }
+
+  /* Таблица */
+  .table-scroll { overflow-x: auto; margin-top: 34px; border: 1px solid var(--line); border-radius: 18px; background: var(--card); }
+  table { width: 100%; min-width: 680px; border-collapse: collapse; font-size: 16px; }
+  th, td { padding: 17px 20px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+  tr:last-child td { border-bottom: 0; }
+  thead th { font: 700 18px var(--book); }
+  td:first-child { width: 20%; color: var(--ink-soft); font-weight: 600; }
+  .col-lev { background: var(--deep); color: var(--screen); border-bottom-color: var(--deep-2); }
+  thead th.col-lev { color: var(--warm); }
+
+  /* Тариф */
+  .price-box { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: clamp(26px, 4vw, 40px); }
+  .price { font: 700 clamp(56px, 8vw, 88px)/0.95 var(--book); letter-spacing: -0.03em; }
+  .price small { font: 400 23px var(--book); color: var(--ink-soft); letter-spacing: 0; }
+  .price-sub { color: var(--ink-soft); margin: 10px 0 0; }
+  .feat { list-style: none; margin: 24px 0; padding: 0; }
+  .feat li { padding: 11px 0; border-top: 1px solid var(--line); }
+  .feat li:last-child { border-bottom: 1px solid var(--line); }
+  .free { background: var(--paper-2); border-radius: 12px; padding: 15px 17px; margin: 0 0 24px; font-size: 16px; }
+  .pay-note { color: var(--ink-soft); font-size: 14.5px; margin: 14px 0 0; }
+  .channels { margin-top: 34px; padding-top: 26px; border-top: 1px solid var(--line); }
+  .channels p { margin-bottom: 12px; }
+  .channel-links { display: flex; flex-wrap: wrap; gap: 10px 22px; padding: 0; margin: 0; list-style: none; font-size: 16px; }
+
+  /* Вопросы */
+  details { border-top: 1px solid var(--line); }
+  details:last-of-type { border-bottom: 1px solid var(--line); }
+  summary { cursor: pointer; padding: 19px 0; font: 700 clamp(19px, 2.1vw, 23px)/1.25 var(--book); list-style: none; display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after {
+    content: ""; flex: none; width: 17px; height: 17px; margin-top: 6px;
+    background:
+      linear-gradient(var(--ink), var(--ink)) center / 100% 2px no-repeat,
+      linear-gradient(var(--ink), var(--ink)) center / 2px 100% no-repeat;
+  }
+  details[open] summary::after { background: linear-gradient(var(--ink), var(--ink)) center / 100% 2px no-repeat; }
+  details .answer { color: var(--ink-soft); padding: 0 0 22px; margin: 0; max-width: 60ch; }
+
+  /* Финал */
+  .final h2 { max-width: 14em; }
+  .final .lead { margin: 18px 0 32px; }
+  footer.dark { border-top: 1px solid var(--deep-2); padding: 34px 0 54px; color: var(--screen-soft); font-size: 14.5px; }
+  footer p { max-width: 72ch; margin: 0 0 10px; }
+  footer a { color: var(--screen); }
+  .legal { display: flex; flex-wrap: wrap; gap: 8px 22px; padding: 0; margin: 18px 0 0; list-style: none; }
+
+  @media (max-width: 900px) {
+    .split, .hero-grid, .gain, .said-row { grid-template-columns: 1fr; }
+    .said-row { gap: 0; padding-bottom: 20px; }
+    .said { padding: 22px 0 8px; }
+    .heard { padding: 0 0 4px 20px; }
+    .heard::before { left: 0; top: 4px; bottom: 4px; }
+    .gain { gap: 10px; }
+    header.top .wrap { height: 62px; }
+    .logo small { display: none; }
+  }
+  @media (max-width: 560px) {
+    header.top .wrap { height: 58px; }
+    .logo { font-size: 18px; white-space: nowrap; }
+    header.top .btn-sm { padding: 9px 14px; font-size: 14px; white-space: nowrap; }
+    .btn { padding: 15px 22px; font-size: 16px; }
+
+    .table-scroll { overflow: visible; border: 0; background: none; border-radius: 0; }
+    table, tbody, tr, td { display: block; min-width: 0; width: 100%; }
+    thead { display: none; }
+    tr { background: var(--card); border: 1px solid var(--line); border-radius: 16px; margin-bottom: 14px; overflow: hidden; }
+    td, td:first-child { border-bottom: 0; padding: 10px 18px; width: 100%; }
+    td:first-child { color: var(--ink); font: 700 20px var(--book); padding-top: 16px; }
+    td[data-label]::before { content: attr(data-label); display: block; font-size: 13px; color: var(--ink-soft); margin-bottom: 2px; }
+    td.col-lev::before { color: var(--warm); }
+    tr td:last-child { padding-bottom: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top">Лев Маркович<small>ИИ-психолог, 24/7</small></a>
+    <a class="btn btn-sm" href="https://annabel.chatium.ru/lev-markovich/chat">Начать разговор</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- Первый экран -->
+  <section class="section hero">
+    <div class="wrap hero-grid">
+      <div>
+        <h1>Рядом люди. А поговорить не с кем.</h1>
+        <p class="lead">Лев Маркович - ИИ-психолог. Выслушает в любое время, разберёт, что на самом деле стоит за вашей ситуацией, и подскажет, с чего начать. Без осуждения и без лекций.</p>
+        <a class="btn" href="https://annabel.chatium.ru/lev-markovich/chat">Начать разговор бесплатно</a>
+        <p class="note">Первые 15 сообщений или 7 дней бесплатно, что наступит раньше.</p>
+        <ul class="facts">
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/></svg>Анонимно</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-4 3-6 7-6s7 2 7 6"/></svg>Без регистрации</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18"/></svg>Прямо в браузере</li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="stage">
+        <div class="blob" aria-hidden="true"></div>
+        <div class="chat" id="chat">
+          <div class="chat-head">
+            <div class="avatar" aria-hidden="true">Л</div>
+            <div><b>Лев Маркович</b><small>ИИ-психолог, на связи</small></div>
+          </div>
+
+          <div class="tabs" role="tablist" aria-label="О чём люди пишут Льву">
+            <button class="tab" role="tab" id="tab-1" aria-selected="true" aria-controls="convo-1">Меня бесит муж</button>
+            <button class="tab" role="tab" id="tab-2" aria-selected="false" aria-controls="convo-2" tabindex="-1">Не сплю ночами</button>
+            <button class="tab" role="tab" id="tab-3" aria-selected="false" aria-controls="convo-3" tabindex="-1">Опять ничего не сделала</button>
+            <button class="tab" role="tab" id="tab-4" aria-selected="false" aria-controls="convo-4" tabindex="-1">Сегодня хорошо</button>
+          </div>
+
+          <div class="convo" id="convo-1" role="tabpanel" aria-labelledby="tab-1">
+            <div class="msg you">Меня бесит муж. Я ему про свой день, а он в телефон. Как будто меня нет.</div>
+            <div class="typing" aria-hidden="true"><span></span><span></span><span></span></div>
+            <div class="msg lev">Слышу, и это правда обидно. Только давайте посмотрим не на него, а на вас: что вы хотели услышать в ответ? Похоже, дело не в телефоне, а в том, что вас не заметили. Попробуйте вспомнить, когда он последний раз вас слышал, и чем тот разговор отличался.</div>
+          </div>
+
+          <div class="convo" id="convo-2" role="tabpanel" aria-labelledby="tab-2" hidden>
+            <div class="msg you">Третий час ночи. Лежу и прокручиваю всё подряд, уснуть не могу.</div>
+            <div class="typing" aria-hidden="true"><span></span><span></span><span></span></div>
+            <div class="msg lev">Я здесь, пишите. Ночью мысли всегда громче, чем они есть. Давайте вытащим их наружу: что крутится первым, когда вы закрываете глаза? Назовите одну мысль, с неё и начнём.</div>
+          </div>
+
+          <div class="convo" id="convo-3" role="tabpanel" aria-labelledby="tab-3" hidden>
+            <div class="msg you">Опять весь день ничего не сделала. Я безнадёжна.</div>
+            <div class="typing" aria-hidden="true"><span></span><span></span><span></span></div>
+            <div class="msg lev">«Безнадёжна» - это не вывод, это приговор, который вы себе вынесли. Давайте по фактам: что вы сегодня действительно сделали, даже мелочи? А потом разберёмся, откуда взялся этот голос, который считает только несделанное.</div>
+          </div>
+
+          <div class="convo" id="convo-4" role="tabpanel" aria-labelledby="tab-4" hidden>
+            <div class="msg you">У меня сегодня просто хороший день. Хочется с кем-то поделиться.</div>
+            <div class="typing" aria-hidden="true"><span></span><span></span><span></span></div>
+            <div class="msg lev">Делитесь, я рад. С хорошим тоже нужно, чтобы кто-то был рядом. Расскажите, что именно получилось, и давайте запомним, из чего этот день сложился - пригодится в другие дни.</div>
+          </div>
+        </div>
+        <svg class="sprig" viewBox="0 0 60 110" aria-hidden="true"><path d="M30 108C28 80 32 46 36 6"/><path d="M29 90C16 88 8 80 6 68 19 70 27 78 29 90z"/><path d="M30 70C43 68 51 60 53 48 40 50 32 58 30 70z"/><path d="M32 50C21 48 14 41 12 31 23 33 30 40 32 50z"/><path d="M34 32C44 30 50 24 52 15 42 17 36 23 34 32z"/></svg>
+        </div>
+        <p class="note">Выберите, что вам ближе, и посмотрите, как Лев отвечает.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Боль: тишина в ответ -->
+  <section class="section band">
+    <div class="wrap">
+      <h2 class="narrow">Вы говорите. А в ответ приходит вот это.</h2>
+
+      <div class="silence">
+        <div class="said-row">
+          <div class="said">Рассказываю, что у меня на душе</div>
+          <div class="heard">Тишина. Или «всё нормально».</div>
+        </div>
+        <div class="said-row">
+          <div class="said">Делюсь идеей, которая для меня важна</div>
+          <div class="heard">Проходит мимо. Как будто я ничего не говорила.</div>
+        </div>
+        <div class="said-row">
+          <div class="said">«Как дела?»</div>
+          <div class="heard">«Нормально». Третий месяц подряд.</div>
+        </div>
+        <div class="said-row">
+          <div class="said">Могла бы написать подруге</div>
+          <div class="heard">Подруг нет. А были бы - вряд ли открылась бы до конца.</div>
+        </div>
+        <div class="said-row">
+          <div class="said">Можно к психологу</div>
+          <div class="heard">3000-4000 ₽ за встречу, запись на следующую неделю и почему-то стыдно.</div>
+        </div>
+      </div>
+
+      <p class="bridge">Дело не в том, что вы слабая. Просто слова были, а достучаться не получалось.</p>
+    </div>
+  </section>
+
+  <!-- История Анны -->
+  <section class="section peach">
+    <div class="wrap story">
+      <h2>Почему я сделала Льва</h2>
+
+      <p class="first">Привет. Меня зовут Анна. Я обычная женщина: дом, муж, дети. Так и живём уже десять лет, я работаю из дома, и весь мой мир - это мои близкие.</p>
+
+      <p>Я не могу сказать, что мне плохо. Скорее, однажды я поймала себя на том, что мне не с кем поговорить. И я знаю, каково это. Поэтому и хочу рассказать тебе свою историю: вдруг ты узнаешь в ней себя.</p>
+
+      <p>С мужем я могу говорить о многом. Но иногда я замечала: я говорю, а он будто не слышит. Делюсь идеей, а она проходит мимо. Рассказываю, что у меня на душе, а в ответ тишина или «всё нормально». Долго я думала, что дело в нём. А потом поняла: я просто не умела сказать так, чтобы меня услышали. Слова были, а достучаться не получалось.</p>
+
+      <p>Подруг у меня нет. А если бы и были, не уверена, что нашла бы в себе силы открыться до конца. Вот и выходит: хочется выговориться, а некому.</p>
+
+      <p>Поэтому я и создала Льва. Место, где можно сказать всё, что накопилось, и не бояться, что тебя осудят, не поймут или начнут поучать. Он не кивает и не жалеет. Он не просто собеседник, который поддакивает.</p>
+
+      <p>Он смотрит на твою ситуацию с точки зрения психологии, помогает увидеть, что на самом деле за ней стоит, и даёт шаги, чтобы снять тяжесть. Не советы с потолка, а разбор по-настоящему. И то, что казалось огромным и нерешаемым, вдруг становится меньше и понятнее.</p>
+
+      <p>А ещё с ним можно говорить не только когда плохо. А и когда хорошо. Иногда я просто думаю с ним вслух: о том, что радует, о планах, о том, что крутится в голове. Он всегда рядом и всегда выслушает.</p>
+
+      <blockquote>И знаешь, что он мне дал? Ощущение, что я не одна. Что есть кто-то, кому можно сказать всё, и тебя услышат. Этого мне так не хватало.</blockquote>
+
+      <p>И мне захотелось, чтобы это было не только у меня. Поэтому я сделала Льва доступным для всех. Для тех, кто, как я, вроде бы не один - семья, близкие, - а внутри чувствует себя одиноким. И для тех, кто одинок по-настоящему, в самом прямом смысле этого слова.</p>
+
+      <div class="signature">
+        <div>
+          <div class="who">Анна</div>
+          <div class="role">создатель Льва Марковича</div>
+        </div>
+      </div>
+
+      <p class="story-cta"><a class="btn" href="https://annabel.chatium.ru/lev-markovich/chat">Если узнали себя, поговорите со Львом</a></p>
+    </div>
+  </section>
+
+  <!-- Как это будет -->
+  <section class="section">
+    <div class="wrap">
+      <h2 class="narrow">Что произойдёт, когда вы нажмёте кнопку</h2>
+
+      <ol class="steps">
+        <li class="step">
+          <div class="n" aria-hidden="true">1</div>
+          <h3>Откройте чат</h3>
+          <p>Прямо в браузере, на компьютере или телефоне. Без регистрации и номера телефона.</p>
+        </li>
+        <li class="step">
+          <div class="n" aria-hidden="true">2</div>
+          <h3>Напишите, что на душе</h3>
+          <p>Одной фразой или длинным письмом. Как получится.</p>
+        </li>
+        <li class="step">
+          <div class="n" aria-hidden="true">3</div>
+          <h3>Получите разбор</h3>
+          <p>Лев поможет увидеть, что стоит за ситуацией, и даст шаги, чтобы снять тяжесть.</p>
+        </li>
+        <li class="step">
+          <div class="n" aria-hidden="true">4</div>
+          <h3>Возвращайтесь, когда нужно</h3>
+          <p>Он помнит вас и ваши темы. Первый разговор бесплатно: 15 сообщений или 7 дней.</p>
+        </li>
+      </ol>
+
+      <p class="steps-cta"><a class="btn" href="https://annabel.chatium.ru/lev-markovich/chat">Начать разговор бесплатно</a></p>
+    </div>
+  </section>
+
+  <!-- Польза -->
+  <section class="section band">
+    <div class="wrap">
+      <h2 class="narrow">Что меняется, когда есть с кем поговорить</h2>
+
+      <div class="gains">
+        <div class="gain">
+          <h3>Мысль перестаёт крутиться в голове</h3>
+          <p>Пока вы носите это в себе, одна и та же мысль ходит по кругу. Как только вы её проговорили, она становится словами, с которыми уже можно что-то сделать.</p>
+        </div>
+        <div class="gain">
+          <h3>Становится видно, что за ситуацией стоит</h3>
+          <p>Лев смотрит на вашу историю с точки зрения психологии. Не «потерпи» и не «все так живут», а разбор: почему вас это задевает и что здесь на самом деле происходит.</p>
+        </div>
+        <div class="gain">
+          <h3>Появляется, с чего начать</h3>
+          <p>В конце разговора у вас есть шаг, а не список советов с потолка. То, что казалось огромным и нерешаемым, становится меньше и понятнее.</p>
+        </div>
+        <div class="gain">
+          <h3>Не нужно каждый раз начинать сначала</h3>
+          <p>Лев помнит ваши темы и переживания от разговора к разговору. Можно продолжить с того места, где остановились неделю назад.</p>
+        </div>
+        <div class="gain">
+          <h3>Есть куда прийти и с хорошим</h3>
+          <p>Не только когда тяжело. Можно просто думать вслух: о планах, о том, что радует, о том, что крутится в голове. Он выслушает и в три ночи, и в обычный вторник.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Темы -->
+  <section class="section">
+    <div class="wrap">
+      <h2 class="narrow">О чём с ним говорят</h2>
+      <p class="lead" style="margin-top:18px">Это не узкий специалист на одну тему. Напишите, что у вас на душе, и Лев разберёт ситуацию честно и по делу.</p>
+
+      <div class="topics">
+        <div class="topic"><b>Отношения</b><span>С партнёром, детьми, родителями: конфликты, охлаждение, непонимание, границы с близкими.</span></div>
+        <div class="topic"><b>Эмоции и состояния</b><span>Тревога, навязчивые мысли, выгорание, апатия, гнев, обида, стыд и чувство вины.</span></div>
+        <div class="topic"><b>Самооценка и внутренний критик</b><span>Тот голос, который ругает. Неуверенность, страх оценки, сравнение с другими, перфекционизм.</span></div>
+        <div class="topic"><b>Смысл и кризисы</b><span>Пустота, потеря смысла, кризисы 30, 40, 50+ и ощущение, что жизнь прошла мимо.</span></div>
+        <div class="topic"><b>Привычки и действия</b><span>Прокрастинация, «откладываю на потом», нет дисциплины, срывы и возврат к старому.</span></div>
+        <div class="topic"><b>Границы и общение</b><span>Не умею говорить «нет», угождаю всем, боюсь конфликтов и того, что обо мне подумают.</span></div>
+        <div class="topic"><b>Жалобы на других</b><span>«Меня бесит муж, мама, начальник». Лев развернёт разговор на вас и вашу ответственность, без осуждения отсутствующего.</span></div>
+        <div class="topic"><b>Работа и деньги</b><span>Токсичная среда, неумение отказывать, страх перемен, выгорание и недовольство собой.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Приватность -->
+  <section class="section dark">
+    <div class="wrap">
+      <h2 class="narrow">Сюда можно сказать всё</h2>
+      <p class="lead" style="margin-top:18px">Ваш разговор остаётся только вашим. Вот как это устроено.</p>
+
+      <div class="privacy">
+        <div><b>Анонимно</b><span>Без регистрации, номера телефона и личных данных.</span></div>
+        <div><b>Только вы и Лев</b><span>Разговор остаётся между вами. Без посторонних глаз.</span></div>
+        <div><b>Данные под защитой</b><span>Переписка хранится в безопасности и остаётся только вашей.</span></div>
+        <div><b>Вы решаете</b><span>В любой момент можно попросить удалить свои данные. Это ваше право по закону.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Не ChatGPT -->
+  <section class="section">
+    <div class="wrap">
+      <h2 class="narrow">Спросить у ИИ-чата и поговорить со Львом - это разное</h2>
+      <p class="lead" style="margin-top:18px">Бесплатный ИИ-чат - удобный помощник на все руки. Но когда на душе тяжело, нужен не помощник на все руки, а собеседник, который слушает и помнит.</p>
+
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th><span class="sr-only">Что сравниваем</span></th>
+              <th class="col-lev">Лев Маркович</th>
+              <th>Обычный ИИ-чат</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Кто отвечает</td>
+              <td class="col-lev" data-label="Лев Маркович">Слушает и разбирает именно вашу историю, от начала до конца</td>
+              <td data-label="Обычный ИИ-чат">Отвечает обо всём на свете, но не про вашу ситуацию</td>
+            </tr>
+            <tr>
+              <td>Помнит о вас</td>
+              <td class="col-lev" data-label="Лев Маркович">Помнит ваши темы и переживания от разговора к разговору</td>
+              <td data-label="Обычный ИИ-чат">Каждый раз знакомство заново</td>
+            </tr>
+            <tr>
+              <td>Подход</td>
+              <td class="col-lev" data-label="Лев Маркович">Прямой и тёплый, называет вещи своими именами, без сюсюканья и лекций</td>
+              <td data-label="Обычный ИИ-чат">Советы «как правильно» и общие слова</td>
+            </tr>
+            <tr>
+              <td>Стоимость</td>
+              <td class="col-lev" data-label="Лев Маркович">Бесплатный пробный период, дальше месяц безлимита</td>
+              <td data-label="Обычный ИИ-чат">Бесплатно, но это не про вашу душу</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Тариф -->
+  <section class="section band" id="start">
+    <div class="wrap split">
+      <div>
+        <h2>Сначала попробуйте. Платите, только если зайдёт.</h2>
+        <p class="lead" style="margin-top:18px">Первый разговор бесплатный: 15 сообщений или 7 дней, что наступит раньше. Если почувствуете, что это помогает, месяц безлимита стоит 990 ₽. Для сравнения: одна встреча с живым психологом - 3000-4000 ₽.</p>
+      </div>
+
+      <div class="price-box">
+        <div class="price">990 ₽ <small>/ месяц</small></div>
+        <p class="price-sub">Безлимитное общение, около 33 ₽ в день</p>
+        <ul class="feat">
+          <li>Безлимит сообщений, ответ в любое время суток</li>
+          <li>Лев помнит вас и ваши темы</li>
+          <li>Утренние практики и напоминания</li>
+          <li>Трекинг настроения по шкале</li>
+          <li>Отписка в один клик, без скрытых условий</li>
+        </ul>
+        <p class="free"><b>Можно без автопродления.</b> Оплатите один месяц, и списаний не будет вовсе: продлевать можно вручную.</p>
+        <a class="btn" href="https://annabel.chatium.ru/lev-markovich/chat">Начать с бесплатного разговора</a>
+        <p class="pay-note">Оплата картой, доступ открывается сразу. Возврат за неиспользованные дни, если напишете в течение 14 дней.</p>
+
+        <div class="channels">
+          <p><b>Где общаться со Львом</b><br>Переписка, подписка и настройки сохраняются при переходе между каналами.</p>
+          <ul class="channel-links">
+            <li><a href="https://annabel.chatium.ru/lev-markovich/chat">Веб-чат на сайте</a></li>
+            <li><a href="https://t.me/mindly_me_bot">Telegram</a></li>
+            <li><a href="https://max.ru/se14192098_bot">Max</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Вопросы -->
+  <section class="section">
+    <div class="wrap split">
+      <h2>Если сомневаетесь</h2>
+      <div>
+        <details>
+          <summary>Кто отвечает в чате?</summary>
+          <p class="answer">ИИ-психолог по имени Лев Маркович: прямой, тёплый, помнит вас между разговорами. Лев Маркович - это имя ИИ, а не живого человека, биографии и стажа у него нет. Открыли чат и уже разговариваете.</p>
+        </details>
+        <details>
+          <summary>Это медицинская услуга?</summary>
+          <p class="answer">Нет. Это разговорная поддержка и сопровождение: помогает разобраться в сложных ситуациях, мыслях и решениях. Это не замена врачу. Если нужна экстренная помощь, позвоните на бесплатную горячую линию 8-800-2000-122.</p>
+        </details>
+        <details>
+          <summary>А если мне нужно срочно?</summary>
+          <p class="answer">Лев на связи круглосуточно, можно написать и ночью. Но если вы в остром кризисе, не откладывайте и не справляйтесь в одиночку: бесплатная горячая линия 8-800-2000-122 работает в России круглосуточно.</p>
+        </details>
+        <details>
+          <summary>Мне стыдно рассказывать о себе.</summary>
+          <p class="answer">Здесь никто не знает вашего имени и не смотрит на вас: без регистрации, номера телефона и личных данных. Можно начать с одной фразы и остановиться, когда захотите.</p>
+        </details>
+        <details>
+          <summary>Как отменить подписку или автопродление?</summary>
+          <p class="answer">Если вы оплатили один месяц, продление происходит только вручную, автоматических списаний нет. Если выбрали автопродление, в чате есть кнопка «Отписаться от автопродления»: один клик, и доступ сохранится до конца оплаченного периода.</p>
+        </details>
+        <details>
+          <summary>Можно ли вернуть деньги?</summary>
+          <p class="answer">Да. Вернём деньги за неиспользованные дни, если напишете нам в течение 14 дней с момента оплаты. Напишите в <a href="https://annabel.chatium.ru/lev-markovich/support">службу поддержки</a>, ответим в течение рабочего дня.</p>
+        </details>
+        <details>
+          <summary>Нужен ли VPN или приложение?</summary>
+          <p class="answer">Нет. Чат работает прямо в браузере, на компьютере или телефоне. Открыли ссылку и пишете.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Финал -->
+  <section class="section dark final">
+    <div class="wrap">
+      <h2>Хватит носить это в себе.</h2>
+      <p class="lead">Напишите Льву прямо сейчас. Первый разговор бесплатно, а дальше у вас будет кто-то, кому не всё равно.</p>
+      <a class="btn" href="https://annabel.chatium.ru/lev-markovich/chat">Начать разговор бесплатно</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="dark">
+  <div class="wrap">
+    <p>Лев Маркович - ИИ-психолог. Это не живой человек и не медицинская услуга. Сервис не ставит диагнозов, не назначает лечение и не заменяет помощь специалиста.</p>
+    <p>Если вам нужна срочная помощь, позвоните на бесплатную круглосуточную линию 8-800-2000-122.</p>
+    <ul class="legal">
+      <li><a href="https://annabel.chatium.ru/lev-markovich/blog">Блог</a></li>
+      <li><a href="https://annabel.chatium.ru/lev-markovich/support">Служба поддержки</a></li>
+      <li><a href="https://annabel.chatium.ru/lev-markovich/offer">Оферта</a></li>
+      <li><a href="https://annabel.chatium.ru/lev-markovich/privacy">Политика конфиденциальности</a></li>
+      <li><a href="https://annabel.chatium.ru/lev-markovich/requisites">Реквизиты</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var chat = document.getElementById('chat');
+    if (!chat) return;
+    var tabs = Array.prototype.slice.call(chat.querySelectorAll('[role="tab"]'));
+
+    function select(tab) {
+      tabs.forEach(function (t) {
+        var on = t === tab;
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+        t.tabIndex = on ? 0 : -1;
+        document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+      });
+    }
+
+    tabs.forEach(function (tab, i) {
+      tab.addEventListener('click', function () { select(tab); });
+      tab.addEventListener('keydown', function (e) {
+        var step = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+        if (!step) return;
+        var next = tabs[(i + step + tabs.length) % tabs.length];
+        select(next);
+        next.focus();
+        e.preventDefault();
+      });
+    });
+  })();
+
+  // Анимации блоков запускаются, когда блок доезжает до экрана
+  (function () {
+    var targets = document.querySelectorAll('.silence, .steps');
+    function show(el) { el.classList.add('seen'); }
+    if (!('IntersectionObserver' in window)) { Array.prototype.forEach.call(targets, show); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { show(en.target); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.2 });
+    Array.prototype.forEach.call(targets, function (t) { io.observe(t); });
+  })();
+</script>
+
+</body>
+</html>
