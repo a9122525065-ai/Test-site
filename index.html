@@ -408,6 +408,10 @@
     @keyframes raysin { from { transform: rotate(-90deg); opacity: 0; } to { transform: rotate(0); opacity: 1; } }
   }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  /* Заглушка: учебная версия, кнопки никуда не ведут */
+  .stub-toast { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); z-index: 50; width: max-content; max-width: calc(100vw - 32px); background: var(--deep); color: var(--screen); font-size: 16px; line-height: 1.45; text-align: center; padding: 14px 22px; border-radius: 14px; box-shadow: 0 18px 40px -16px rgba(0, 0, 0, .55); }
+  .stub-toast[hidden] { display: none; }
 </style>
 </head>
 <body>
@@ -415,7 +419,7 @@
 <header class="top">
   <div class="wrap">
     <a class="logo" href="#top"><img class="logo-img" src="images/lev-avatar.png" alt="" width="40" height="40"><span>Лев Маркович<small>ИИ-психолог, 24/7</small></span></a>
-    <a class="btn btn-sm" href="https://annabel.chatium.ru/lev-markovich/chat">Начать разговор</a>
+    <a class="btn btn-sm" href="#" data-stub>Начать разговор</a>
   </div>
 </header>
 
@@ -427,7 +431,7 @@
       <div>
         <h1>Рядом люди. А поговорить не с кем.</h1>
         <p class="lead">Лев Маркович - ИИ-психолог. Выслушает в любое время, разберёт, что на самом деле стоит за вашей ситуацией, и подскажет, с чего начать. Без осуждения и без лекций.</p>
-        <a class="btn" href="https://annabel.chatium.ru/lev-markovich/chat">Начать разговор бесплатно</a>
+        <a class="btn" href="#" data-stub>Начать разговор бесплатно</a>
         <p class="note">Первые 15 сообщений или 7 дней бесплатно, что наступит раньше.</p>
         <ul class="facts">
           <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/></svg>Анонимно</li>
@@ -518,7 +522,7 @@
         </div>
       </div>
 
-      <p class="story-cta"><a class="btn" href="https://annabel.chatium.ru/lev-markovich/chat">Если узнали себя, поговорите со Львом</a></p>
+      <p class="story-cta"><a class="btn" href="#" data-stub>Если узнали себя, поговорите со Львом</a></p>
     </div>
   </section>
 
@@ -550,7 +554,7 @@
         </li>
       </ol>
 
-      <p class="steps-cta"><a class="btn" href="https://annabel.chatium.ru/lev-markovich/chat">Начать разговор бесплатно</a></p>
+      <p class="steps-cta"><a class="btn" href="#" data-stub>Начать разговор бесплатно</a></p>
     </div>
   </section>
 
@@ -693,7 +697,7 @@
           <li>Трекинг настроения по шкале</li>
           <li>Отписка в один клик, без скрытых условий</li>
         </ul>
-        <a class="btn" href="https://annabel.chatium.ru/lev-markovich/chat">Начать с бесплатного разговора</a>
+        <a class="btn" href="#" data-stub>Начать с бесплатного разговора</a>
         <p class="pay-note">Оплата картой · доступ открывается сразу после оплаты · возврат за неиспользованные дни, если напишете в течение 14 дней</p>
         <p class="pay-note">Можно без автопродления: оплатите один месяц, и списаний не будет.</p>
       </div>
@@ -716,7 +720,7 @@
           </div>
           <h3>Веб-чат</h3>
           <p>Начните разговор прямо на сайте - без установки приложений.</p>
-          <a href="https://annabel.chatium.ru/lev-markovich/chat"><span>Открыть чат</span> →</a>
+          <a href="#" data-stub><span>Открыть чат</span> →</a>
         </li>
         <li class="channel channel-tg">
           <div class="channel-ico" aria-hidden="true">
@@ -724,7 +728,7 @@
           </div>
           <h3>Telegram</h3>
           <p>Переписка всегда под рукой, приходят уведомления.</p>
-          <a href="https://t.me/mindly_me_bot"><span>Открыть в Telegram</span> →</a>
+          <a href="#" data-stub><span>Открыть в Telegram</span> →</a>
         </li>
         <li class="channel channel-max">
           <div class="channel-ico" aria-hidden="true">
@@ -732,7 +736,7 @@
           </div>
           <h3>Max</h3>
           <p>Общайтесь в мессенджере Max - там же, где вы уже пишете.</p>
-          <a href="https://max.ru/se14192098_bot"><span>Открыть в Max</span> →</a>
+          <a href="#" data-stub><span>Открыть в Max</span> →</a>
         </li>
       </ul>
     </div>
@@ -783,7 +787,7 @@
     <div class="wrap">
       <h2>Хватит носить это в себе.</h2>
       <p class="lead">Напишите Льву прямо сейчас. Первый разговор бесплатно, а дальше у вас будет кто-то, кому не всё равно.</p>
-      <a class="btn" href="https://annabel.chatium.ru/lev-markovich/chat">Начать разговор бесплатно</a>
+      <a class="btn" href="#" data-stub>Начать разговор бесплатно</a>
     </div>
   </section>
 
@@ -864,7 +868,24 @@
       b.addEventListener('pointerdown', ripple);
     });
   })();
+
+  // Заглушки: кнопки с data-stub ничего не открывают, а показывают подсказку
+  (function () {
+    var timer;
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[data-stub]');
+      if (!a) return;
+      e.preventDefault();
+      var toast = document.getElementById('stub-toast');
+      toast.textContent = 'Это учебная версия сайта. Кнопка пока ничего не открывает, здесь будет чат со Львом Марковичем.';
+      toast.hidden = false;
+      clearTimeout(timer);
+      timer = setTimeout(function () { toast.hidden = true; }, 4500);
+    });
+  })();
 </script>
+
+<div class="stub-toast" id="stub-toast" role="status" aria-live="polite" hidden></div>
 
 </body>
 </html>
